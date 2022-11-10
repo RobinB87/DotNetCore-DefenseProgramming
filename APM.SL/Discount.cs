@@ -35,5 +35,19 @@ namespace APM.SL
 
             return foundDiscount;
         }
+
+        public (Discount? Discount, string? Message) FindDiscountWithTuple(List<Discount>? discounts, string discountName)
+        {
+            if (discounts is null)
+                return (Discount: null, Message: "No discounts found");
+
+            var foundDiscount =
+                       discounts.Find(d => d.DiscountName == discountName);
+
+            if (foundDiscount is null)
+                return (Discount: null, Message: "Discount not found");
+
+            return (Discount: foundDiscount, Message: null);
+        }
     }
 }

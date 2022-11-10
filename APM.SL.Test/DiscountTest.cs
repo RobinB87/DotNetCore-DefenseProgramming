@@ -50,5 +50,21 @@ namespace APM.SL.Test
             
             Assert.Equal("Discount not found", ex.Message);
         }
+
+        [Fact]
+        public void FindDiscountWithTuple_WhenListIsNull_ShouldReturnNull()
+        {
+            // Arrange
+            List<Discount>? discounts = null;
+            var discountName = "40% off";
+            (Discount? Discount, string? Message) expected = (Discount: null, Message: "No discounts found");
+            var discount = new Discount();
+
+            // Act
+            var actual = discount.FindDiscountWithTuple(discounts, discountName);
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
     }
 }
