@@ -5,6 +5,11 @@ namespace APM.SL
 {
     public class Product
     {
+        private const string CostName = "cost";
+        private const string PriceName = "Price";
+        private string GetMarginError (string argument) 
+            => $"The {argument} must be a number 0 or greater";
+
         // Value Types
         public DateTime? EffectiveDate { get; set; }
         public decimal Cost { get; set; }
@@ -31,10 +36,12 @@ namespace APM.SL
         public decimal CalculateMargin(string costInput, string priceInput)
         {
             var success = decimal.TryParse(costInput, out decimal cost);
-            if (!success || cost == 0) return 0;
+            if (!success || cost == 0) 
+                throw new ArgumentException(GetMarginError(CostName), CostName);
 
             success = decimal.TryParse(priceInput, out decimal price);
-            if (!success || price == 0) return 0;
+            if (!success || price == 0)
+                throw new ArgumentException(GetMarginError(PriceName), PriceName);
 
             var margin = ((price - cost) / price) * 100M;
 
