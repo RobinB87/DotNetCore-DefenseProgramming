@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using APM.Utilities;
+using System;
+using System.Collections.Generic;
 
 namespace APM.SL
 {
@@ -20,5 +22,18 @@ namespace APM.SL
             return foundDiscount;
         }
 
+        public Discount FindDiscountWithException(List<Discount>? discounts, string discountName)
+        {
+            if (discounts is null)
+                throw new ArgumentException("No discounts found");
+
+            var foundDiscount = discounts
+                .Find(d => d.DiscountName == discountName);
+
+            if (foundDiscount == null)
+                throw new DiscountNotFoundException("Discount not found");
+
+            return foundDiscount;
+        }
     }
 }
