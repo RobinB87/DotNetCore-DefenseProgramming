@@ -7,7 +7,6 @@ namespace APM.MVC.Controllers
 {
   public class ProductController : Controller
   {
-
     // GET action
     // When navigating to the page.
     public IActionResult PriceUpdate()
@@ -53,6 +52,5 @@ namespace APM.MVC.Controllers
     {
       return View();
     }
-
   }
 }
