@@ -185,7 +185,7 @@ namespace APM.SL.Test
 
       // Act & Assert
       var ex = Assert.Throws<ArgumentException>(() => product.CalculateMargin(cost, price));
-      Assert.Equal("The cost must be a number greater than 0 (Parameter 'cost')", ex.Message);
+      Assert.Equal("The cost must be a number 0 or greater (Parameter 'cost')", ex.Message);
     }
 
     [Fact]
@@ -213,7 +213,7 @@ namespace APM.SL.Test
       // Act & Assert
       var ex = Assert.Throws<ArgumentException>(() => 
 	                              product.CalculateMargin(cost, price));
-      Assert.Equal("The cost must be a number greater than 0 (Parameter 'cost')", ex.Message);
+      Assert.Equal("The cost must be a number 0 or greater (Parameter 'cost')", ex.Message);
     }
 
     [Fact]
@@ -242,7 +242,7 @@ namespace APM.SL.Test
 
       // Assert
       var ex = Assert.Throws<ArgumentException>(act);
-      Assert.Equal("The cost must be a number greater than 0 (Parameter 'cost')", ex.Message);
+      Assert.Equal("The cost must be a number 0 or greater (Parameter 'cost')", ex.Message);
     }
 
     [Fact]
@@ -257,7 +257,7 @@ namespace APM.SL.Test
       var ex = Assert.Throws<ArgumentException>(() => 
         product.CalculateMargin(cost, price));
       Assert.Equal(
-        "The cost must be a number greater than 0 (Parameter 'cost')",
+        "The cost must be a number 0 or greater (Parameter 'cost')",
         ex.Message);
     }
 
