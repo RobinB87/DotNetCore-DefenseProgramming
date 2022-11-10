@@ -42,12 +42,11 @@ namespace APM.SL
         /// <returns></returns>
         public decimal CalculateTotalDiscount(decimal price, Discount discount)
         {
-            if (price <= 0) throw new ArgumentException("Please enter the price");
-
-            if (discount is null) throw new ArgumentException("Please specify a discount");
-
-            var discountAmount = price * (discount.PercentOff / 100);
-
+            if (price <= 0) 
+                throw new ArgumentException("Please enter the price");
+            if (discount?.PercentOff is null) 
+                throw new ArgumentException("Please specify a discount");
+            var discountAmount = price * (discount.PercentOff.Value / 100);
             return discountAmount;
         }
 
@@ -82,9 +81,7 @@ namespace APM.SL
         public bool ValidateEffectiveDate(DateTime? effectiveDate)
         {
             if (!effectiveDate.HasValue) return false;
-
             if (effectiveDate.Value < DateTime.Now.AddDays(7)) return false;
-
             return true;
         }
 

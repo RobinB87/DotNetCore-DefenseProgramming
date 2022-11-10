@@ -336,6 +336,22 @@ namespace APM.SL.Test
             Assert.Equal("Please enter the price", ex.Message);
         }
 
+        [Fact]
+        public void CalculateTotalDiscount_WhenPercentOffIsNullShouldReturnError()
+        {
+            // Arrange
+            var price = 200;
+            var discount = new Discount()
+            {
+                PercentOff = null
+            };
+            var product = new Product();
+
+            // Act & Assert
+            var ex = Assert.Throws<ArgumentException>(() => product.CalculateTotalDiscount(price, discount));
+            Assert.Equal("Please specify a discount", ex.Message);
+        }
+
         //
         // SavePrice
         //
