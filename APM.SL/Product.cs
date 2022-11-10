@@ -6,9 +6,9 @@ namespace APM.SL
     public class Product
     {
         private const string CostName = "cost";
-        private const string PriceName = "Price";
+        private const string PriceName = "price";
         private string GetMarginError (string argument) 
-            => $"The {argument} must be a number 0 or greater";
+            => $"The {argument} must be a number greater than 0";
 
         // Value Types
         public DateTime? EffectiveDate { get; set; }
@@ -18,13 +18,9 @@ namespace APM.SL
 
         // Reference Types
         public string Category { get; set; }
-
         public List<Discount> Discounts { get; set; }
-
         public Discount ProductDiscount { get; set; }
-
         public string ProductName { get; set; }
-
         public string Reason { get; set; }
 
         /// <summary>
