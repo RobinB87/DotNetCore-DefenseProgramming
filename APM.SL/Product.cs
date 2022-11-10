@@ -12,11 +12,11 @@ namespace APM.SL
         public int ProductId { get; set; }
 
         // Reference Types
-        public string Category { get; set; }
-        public List<Discount> Discounts { get; set; }
-        public Discount ProductDiscount { get; set; }
-        public string ProductName { get; set; }
-        public string Reason { get; set; }
+        public string Category { get; set; } = string.Empty;
+        public List<Discount>? Discounts { get; set; } 
+        public Discount? ProductDiscount { get; set; } 
+        public string ProductName { get; set; } = string.Empty;
+        public string Reason { get; set; } = string.Empty;
 
         /// <summary>
         /// Calculate the potential profit margin.
